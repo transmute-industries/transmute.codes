@@ -63,7 +63,7 @@ export default function Home() {
                   <NewspaperIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="RFC9285" secondary="August 08, 2022" />
+              <ListItemText primary="The Base45 Data Encoding" secondary="August 08, 2022" />
             </ListItem>
            
 
@@ -78,13 +78,11 @@ export default function Home() {
                   <NewspaperIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="RFC6330" secondary="Jun 03, 2020" />
+              <ListItemText primary="RaptorQ Forward Error Correction Scheme for Object Delivery" secondary="Jun 03, 2020" />
             </ListItem>
-            
-
 
             <ListItem secondaryAction={
-              <IconButton edge="end" aria-label="rfc" href="https://datatracker.ietf.org/doc/RFC5053" target="_blank" rel="noopener noreferrer">
+              <IconButton edge="end" aria-label="TR" href="https://www.w3.org/TR/SVG2/" target="_blank" rel="noopener noreferrer">
                 <OpenInNewIcon />
               </IconButton>
             }
@@ -94,9 +92,22 @@ export default function Home() {
                   <NewspaperIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="RFC5053" secondary="Dec 12, 2018" />
+              <ListItemText primary="Scalable Vector Graphics (SVG) 2" secondary="October, 2018" />
             </ListItem>
-            
+
+            <ListItem secondaryAction={
+              <IconButton edge="end" aria-label="rfc" href="https://datatracker.ietf.org/doc/RFC2397" target="_blank" rel="noopener noreferrer">
+                <OpenInNewIcon />
+              </IconButton>
+            }
+            >
+              <ListItemAvatar>
+                <Avatar>
+                  <NewspaperIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary='The "data" URL scheme' secondary="August, 1998" />
+            </ListItem>
           </List>
         </Paper>
         <Particles />

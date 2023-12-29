@@ -42,11 +42,11 @@ const FileUploader = ({ onFilesAccepted, sx, dragText,dropText }:any) => {
       <input {...getInputProps()} />
       {isDragActive ? (
         <Typography color={theme.palette.secondary.main}>
-          {dropText || 'drop file here.'}
+          {dropText || 'Drop the file here.'}
         </Typography>
       ) : (
         <Typography color={theme.palette.primary.main}>
-          {dragText || 'drag file here.'}
+          {dragText || 'Drag file here, or click to upload.'}
         </Typography>
       )}
     </Paper>
