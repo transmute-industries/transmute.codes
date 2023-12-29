@@ -2,6 +2,8 @@
 
 Needs a better name.
 
+I suggest testing with small text files, such as [message.txt](message.txt).
+
 This is how it works:
 
 ```mermaid
