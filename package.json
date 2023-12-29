@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "npm run build-rust",
     "dev": "next dev",
     "build-rust": "wasm-pack build --target bundler wraptor",
     "build": "next build",
