@@ -20,7 +20,6 @@ flowchart LR
 
 <img src="./demo.gif" />
 
-
 ## License
 
 Licensed under
