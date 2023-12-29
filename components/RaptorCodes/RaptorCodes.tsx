@@ -54,7 +54,7 @@ const RenderCodes = ({ data }: { data: string[] }) => {
   const [index, setIndex] = useState(0)
   setTimeout(() => {
     setIndex((index + 1) % data.length)
-  }, 500)
+  }, index === 0 ? 2000 : 750)
   return <Box component="img" src={data[index]} alt={'raptor codes'} sx={{
     overflow: 'hidden',
     width: '100%',
@@ -74,7 +74,7 @@ const RaptorCodes = ({ message }: RaptorCodesProps) => {
         return binaryToQrCode(compressed)
       })
       // by convention we send the config as the first image
-      // it would be better to discover with higher reliability
+      // it would be better to discover it with higher reliability
       setImages([config, ...packets])
     })()
   }, [message])
