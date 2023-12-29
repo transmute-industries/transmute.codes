@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RaptorQ Compressed QR Code Data URI Transmission
 
-## Getting Started
+Needs a better name.
 
-First, run the development server:
+This is how it works:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```mermaid
+flowchart LR
+  File
+  DataURI
+  RaptorQ
+  GZIP
+  QRCodes
+
+  File --> DataURI
+  DataURI --> RaptorQ
+  RaptorQ --> GZIP
+  GZIP --> QRCodes
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<img src="./demo.gif" />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## License
 
-## Learn More
+Licensed under
 
-To learn more about Next.js, take a look at the following resources:
+ * Apache License, Version 2.0 ([LICENSE](LICENSE) or http://www.apache.org/licenses/LICENSE-2.0)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Contribution
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in the work by you shall be licensed as above, without any
+additional terms or conditions.
 
-## Deploy on Vercel
+<img src="./banner.png" />
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### [Questions? Contact Transmute](https://transmute.typeform.com/to/RshfIw?typeform-source=transmute.codes)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
