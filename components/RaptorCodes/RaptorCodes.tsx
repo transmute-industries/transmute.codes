@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import type { Raptor } from '../../wraptor'
+import type { Raptor } from './wraptor'
 
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -63,7 +63,7 @@ const RaptorCodes = ({ message }: RaptorCodesProps) => {
   const [images, setImages] = useState<string[]>([])
   useEffect(() => {
     (async () => {
-      const raptor: Raptor = await import('../../wraptor/pkg');
+      const raptor: Raptor = await import('./wraptor/pkg');
       const encoded = raptor.encode(message)
       const config = binaryToQrCode(encoded.config)
       const packets = encoded.packets.map(binaryToQrCode)
