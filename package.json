@@ -23,8 +23,6 @@
     "react-dom": "^18",
     "react-dropzone": "^14.2.3",
     "react-particles": "^2.12.2",
-    "react-swipeable-views": "^0.14.0",
-    "react-swipeable-views-utils": "^0.14.0",
     "tsparticles": "^3.0.3",
     "tsparticles-engine": "^2.12.0"
   },
