@@ -1,4 +1,4 @@
-import Create from "@/components/Create/Create"
+import Create from "@/components/Create"
 
 export default function Home() {
   return (

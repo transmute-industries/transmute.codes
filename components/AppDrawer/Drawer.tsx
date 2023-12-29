@@ -12,6 +12,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import HomeIcon from '@mui/icons-material/Home';
 import { useRouter } from 'next/navigation'
@@ -57,6 +58,15 @@ export default function CustomDrawer({theme, open, handleDrawerClose}:any) {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
+            <ListItemButton onClick={() => router.push('/scan')}>
+              <ListItemIcon>
+                <QrCodeScannerIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Scan"} />
+            </ListItemButton>
+          </ListItem>
+          
+          <ListItem disablePadding>
             <ListItemButton href='https://github.com/transmute-industries/transmute.codes' target="_blank" rel="noopener noreferrer">
               <ListItemIcon>
                 <GitHubIcon />
@@ -64,6 +74,7 @@ export default function CustomDrawer({theme, open, handleDrawerClose}:any) {
               <ListItemText primary={"Source"} />
             </ListItemButton>
           </ListItem>
+          
           <ListItem disablePadding>
             <ListItemButton onClick={() => router.push('/credits')}>
               <ListItemIcon>

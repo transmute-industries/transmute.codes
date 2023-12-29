@@ -6,6 +6,7 @@ import type { Raptor } from './wraptor'
 
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import pako from 'pako'
 import { QRCode } from '@ali1416/qrcode-encoder'
 
 import b45 from 'base45-web'
@@ -40,6 +41,7 @@ function QrMatrix2SvgPath(bytes: Array<boolean[]>, pixelSize: number) {
 }
 
 const binaryToQrCode = (data: Uint8Array) => {
+ 
   const base45Encoded = b45.encode(data)
   const content = base45Encoded;
   const qr = new QRCode(content);
@@ -63,10 +65,14 @@ const RaptorCodes = ({ message }: RaptorCodesProps) => {
   const [images, setImages] = useState<string[]>([])
   useEffect(() => {
     (async () => {
+
       const raptor: Raptor = await import('./wraptor/pkg');
       const encoded = raptor.encode(message)
       const config = binaryToQrCode(encoded.config)
-      const packets = encoded.packets.map(binaryToQrCode)
+      const packets = encoded.packets.map((p)=>{
+        const compressed = pako.deflate(new Uint8Array(p));
+        return binaryToQrCode(compressed)
+      })
       // by convention we send the config as the first image
       // it would be better to discover with higher reliability
       setImages([config, ...packets])
