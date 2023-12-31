@@ -46,13 +46,14 @@ const encode = async (message: Uint8Array): Promise<string[]> =>{
   const raptor: Raptor = await import('../wraptor/pkg');
   const encoded = raptor.encode({
     message,
-    maximum_transmission_unit: 1440, // ethernet... should be optimized for base45 qr codes.
+    maximum_transmission_unit: 1024,
     repair_packets_per_block: 5
   })
   const config = binaryToQrCode(encoded.config)
   const packets = encoded.packets.map((p) => {
-    const compressed = pako.deflate(new Uint8Array(p));
-    return binaryToQrCode(compressed)
+    let packet = new Uint8Array(p);
+    packet = pako.deflate(packet);
+    return binaryToQrCode(packet)
   })
   return [config, ...packets]
 }
@@ -78,7 +79,8 @@ const processScan = (text: string, packets: Array<Uint8Array> = []) => {
   if (data.byteLength === 12) {
     config = data;
   } else {
-    const packet = pako.inflate(data);
+    let packet = data;
+    packet = pako.inflate(data);
     packets.push(packet);
   }
   return { config, packets }
