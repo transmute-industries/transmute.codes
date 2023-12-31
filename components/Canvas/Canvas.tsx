@@ -4,8 +4,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Box, Paper, Typography, CircularProgress, Button } from '@mui/material';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import GIFEncoder from 'gif-encoder-2-browser';
-
 
 import { downloader } from '@/utils';
 
@@ -21,6 +19,7 @@ const promiseToDraw = (ctx: any, dataUri: string) => {
 }
 
 const createGif = async (canvas: any, dataUris: string[]) => {
+  const { default: GIFEncoder } = await import('gif-encoder-2-browser')
   const ctx = canvas.getContext('2d', { willReadFrequently: true })
   const encoder = new GIFEncoder(512, 512);
   encoder.setDelay(500);
