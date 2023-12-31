@@ -4,20 +4,20 @@
 import { useEffect, useState } from 'react';
 import { raptor } from '../../utils'
 import Canvas from '@/components/Canvas';
-import { Box, Paper, Typography, CircularProgress, Button } from '@mui/material';
-import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
+import { Box, Typography, CircularProgress } from '@mui/material';
+
 interface RaptorCodesProps {
-  message: Uint8Array
+  dataURL: string
 }
 
-const RaptorCodes = ({ message }: RaptorCodesProps) => {
+const RaptorCodes = ({ dataURL }: RaptorCodesProps) => {
   const [images, setImages] = useState<string[]>([])
   useEffect(() => {
     (async () => {
-      const dataURIs = await raptor.encode(message)
-      setImages(dataURIs)
+      const dataURLs = await raptor.encode(dataURL)
+      setImages(dataURLs)
     })()
-  }, [message])
+  }, [dataURL])
   return <>
     {
       images.length === 0 ?

@@ -5,22 +5,31 @@ import AppDrawer from "@/components/AppDrawer"
 import FileUploader from "@/components/FileUploader"
 import RaptorCodes from "../RaptorCodes/RaptorCodes"
 
+
+const readAsDataURL = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.onload = () => resolve(fileReader.result as string);
+      fileReader.readAsDataURL(file);
+  });
+}
+
+
 export default function Create() {
-  const [message, setMessage] = useState<Uint8Array>()
+  const [dataURL, setDataURL] = useState<string>()
   const onFilesAccepted = async (files: File[]) => {
     const [file] = files
-    const content = new Uint8Array(await file.arrayBuffer());
-    const dataURL = `data:${file.type};base64,${btoa(new TextDecoder('utf8').decode(content))}`
-    setMessage(new TextEncoder().encode(dataURL))
+    const dataURL = await readAsDataURL(file)
+    setDataURL(dataURL)
   }
   return (
     <Theme>
       <AppDrawer>
         {
-          !message ? <>
+          !dataURL ? <>
             <FileUploader onFilesAccepted={onFilesAccepted} />
           </> : <>
-            <RaptorCodes message={message} />
+            <RaptorCodes dataURL={dataURL} />
           </>
         }
       </AppDrawer>

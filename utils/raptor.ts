@@ -42,7 +42,8 @@ const binaryToQrCode = (data: Uint8Array) => {
 }
 
 
-const encode = async (message: Uint8Array): Promise<string[]> =>{
+const encode = async (dataURL: string): Promise<string[]> =>{
+  const message = new TextEncoder().encode(dataURL);
   const raptor: Raptor = await import('../wraptor/pkg');
   const encoded = raptor.encode({
     message,

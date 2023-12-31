@@ -1,9 +1,5 @@
 # RaptorQ Compressed QR Code Data URI Transmission
 
-Needs a better name.
-
-I suggest testing with small text files, such as [message.txt](message.txt).
-
 This is how it works:
 
 ```mermaid
@@ -12,15 +8,19 @@ flowchart LR
   DataURI
   RaptorQ
   GZIP
+  BASE45
   QRCodes
 
   File --> DataURI
   DataURI --> RaptorQ
   RaptorQ --> GZIP
-  GZIP --> QRCodes
+  GZIP -> BASE45
+  BASE45 --> QRCodes
 ```
 
-<img src="./demo.gif" />
+### [message.txt](message.txt) becomes:
+
+<img src="./message.gif" />
 
 ## License
 
