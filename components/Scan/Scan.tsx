@@ -13,7 +13,7 @@ import Scanner from "../Scanner/Scanner"
 
 import b45 from 'base45-web'
 import pako from 'pako'
-import type { Raptor } from '../RaptorCodes/wraptor'
+import type { Raptor } from '../../wraptor'
 
 import CircularProgress from '@mui/material/CircularProgress';
 

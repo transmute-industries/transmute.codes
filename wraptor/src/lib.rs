@@ -2,8 +2,15 @@ use wasm_bindgen::prelude::*;
 use raptorq::{Decoder, Encoder, EncodingPacket, ObjectTransmissionInformation};
 
 use std::str;
-use js_sys::Uint8Array;
 use serde::{Serialize, Deserialize};
+
+
+#[derive(Serialize, Deserialize)]
+pub struct EncodeCommand {
+    pub message: Vec<u8>,
+    pub maximum_transmission_unit: u16,
+    pub repair_packets_per_block: u32
+}
 
 #[derive(Serialize, Deserialize)]
 pub struct EncodeResult {
@@ -17,12 +24,13 @@ pub struct DecodeResult {
 }
 
 #[wasm_bindgen]
-pub fn encode(message: &Uint8Array) -> JsValue {
-    let encoder = Encoder::with_defaults(&message.to_vec(), 1400);
+pub fn encode(js_value: JsValue) -> JsValue {
+    let EncodeCommand { message, maximum_transmission_unit, repair_packets_per_block }  = serde_wasm_bindgen::from_value(js_value).unwrap();
+    let encoder = Encoder::with_defaults(&message, maximum_transmission_unit);
     let config = encoder.get_config().serialize();
     // Perform the encoding, and serialize to Vec<u8> for transmission
     let packets: Vec<Vec<u8>> = encoder
-        .get_encoded_packets(15)
+        .get_encoded_packets(repair_packets_per_block)
         .iter()
         .map(|packet| packet.serialize())
         .collect();
