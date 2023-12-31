@@ -19,6 +19,7 @@
     "@tsparticles/engine": "^3.0.3",
     "@tsparticles/react": "^3.0.0",
     "base45-web": "^1.0.2",
+    "gif-encoder-2-browser": "^1.0.5",
     "next": "14.0.4",
     "pako": "^2.1.0",
     "react": "^18",
