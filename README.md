@@ -14,7 +14,7 @@ flowchart LR
   File --> DataURI
   DataURI --> RaptorQ
   RaptorQ --> GZIP
-  GZIP -> BASE45
+  GZIP --> BASE45
   BASE45 --> QRCodes
 ```
 
